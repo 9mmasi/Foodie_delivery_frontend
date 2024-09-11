@@ -3,7 +3,7 @@ import appDownImage from '../assets/appDownload.png'
 const HomePage = () => {
   return (
     <div className='flex flex-col gap-12'>
-        <div className=".shadow-md .bg-white .py-8 .rounded-lg flex flex-col gap-5 text-center -mt-16">
+        <div className="shadow-md bg-white py-8 rounded-lg flex flex-col gap-5 text-center -mt-16">
             <h1 className='text-5xl text-orange-500 tracking-tight font-bold'>
                 Tuck into  a takeaway today
             </h1>
