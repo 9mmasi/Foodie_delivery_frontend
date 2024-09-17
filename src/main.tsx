@@ -1,18 +1,32 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import { BrowserRouter as Router } from 'react-router-dom'
-import AppRoutes from './AppRoutes.tsx'
-import  Auth0ProviderWithNavigate from '../src/auth0/Auth0ProviderWithNavigate.tsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppRoutes from './AppRoutes.tsx';
+import Auth0ProviderWithNavigate from './auth0/Auth0ProviderWithNavigate.tsx';
+
+// React Query imports
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+// Create a client for React Query
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router>
-    <Auth0ProviderWithNavigate>
-      <AppRoutes />
-      </Auth0ProviderWithNavigate>
-    
+      
+        <QueryClientProvider client={queryClient}>
+        <Auth0ProviderWithNavigate>
+          <AppRoutes />
+          </Auth0ProviderWithNavigate>
+        </QueryClientProvider>
+      
     </Router>
-    
-  </StrictMode>,
-)
+  </StrictMode>
+);
